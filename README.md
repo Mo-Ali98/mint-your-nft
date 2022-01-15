@@ -1,4 +1,4 @@
-# Mint you own NFT 👋 
+# Mint your own NFT 👋 
 
 ## A Web3 App that mint your own NFT collection using Solidity + Ethereum Smart Contracts
 
