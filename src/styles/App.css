@@ -1,13 +1,16 @@
+body {
+  background: #ebf2fa;
+  color: #05668d;
+}
+
 .App {
   height: 100vh;
-  background-color: #0d1116;
   overflow: scroll;
   text-align: center;
 }
 
 .container {
   height: 100%;
-  background-color: #0d1116;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,7 +28,6 @@
 
 .sub-text {
   font-size: 25px;
-  color: white;
 }
 
 .gradient-text {
@@ -49,15 +51,16 @@
 }
 
 .connect-wallet-button {
-  background: -webkit-linear-gradient(left, #60c657, #35aee2);
+  background: linear-gradient(200deg, #05668d, #427aa1, #679436, #a5be00);
   background-size: 200% 200%;
   animation: gradient-animation 4s ease infinite;
 }
 
 .mint-button {
-  background: -webkit-linear-gradient(left, #a200d6, #ff6fdf);
+  background: linear-gradient(200deg, #05668d, #427aa1, #679436, #a5be00);
   background-size: 200% 200%;
-  animation: gradient-animation 4s ease infinite;
+  -webkit-animation: gradient-animation 3s ease infinite;
+  animation: gradient-animation 3s ease infinite;
   margin-right: 15px;
 }
 
@@ -113,6 +116,29 @@
   }
 }
 @keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes buttonAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes buttonAnimation {
   0% {
     background-position: 0% 50%;
   }
