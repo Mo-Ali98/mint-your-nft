@@ -10,6 +10,8 @@ const CONTRACT_ADDRESS = "0x8678CD14c6B0301B1cB9803815e7258f6E56F6ea";
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [generatedLink, setGeneratedLink] = useState("");
 
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
@@ -66,8 +68,8 @@ const App = () => {
         // If you're familiar with webhooks, it's very similar to that!
         connectedContract.on("NewEpicNFTMinted", (from, tokenId) => {
           console.log(from, tokenId.toNumber());
-          alert(
-            `Hey there! We've minted your NFT and sent it to your wallet. It may be blank right now. It can take a max of 10 min to show up on OpenSea. Here's the link: https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+          setGeneratedLink(
+            `https://testnets.opensea.io/assets/${CONTRACT_ADDRESS}/${tokenId.toNumber()}`
           );
         });
 
@@ -93,6 +95,8 @@ const App = () => {
           signer
         );
 
+        setLoading(true);
+
         console.log("Going to pop wallet now to pay gas...");
         let nftTxn = await connectedContract.makeAnEpicNFT();
 
@@ -107,6 +111,8 @@ const App = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -156,10 +162,8 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header gradient-text">My NFT Collection</p>
-          <p className="sub-text">
-            Each unique. Each beautiful. Discover your NFT today.
-          </p>
+          <p className="header">Generate My NFT Collection</p>
+          <p className="sub-text">Generate a unique NFT today.</p>
           {currentAccount === "" ? (
             renderNotConnectedContainer()
           ) : (
@@ -167,13 +171,33 @@ const App = () => {
             <button
               onClick={askContractToMintNft}
               className="cta-button connect-wallet-button"
+              disabled={loading}
             >
-              Mint NFT
+              {loading ? "Minting...." : "Mint a NFT!"}
             </button>
           )}
-          );
         </div>
-        <div className="footer-container"></div>
+        <div className="card-container">
+          {generatedLink && (
+            <div className="card">
+              <p>
+                Hey there! We've minted your NFT and sent it to your wallet. It
+                may be blank right now. It can take a max of 10 min to show up
+                on OpenSea. Here's the link:{" "}
+                <a
+                  href={generatedLink}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {generatedLink}
+                </a>
+              </p>
+            </div>
+          )}
+        </div>
+        <div className="footer-container">
+          Mohamed - Built thanks to BuildSpace ❤️
+        </div>
       </div>
     </div>
   );
