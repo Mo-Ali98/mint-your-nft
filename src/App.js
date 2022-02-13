@@ -178,7 +178,7 @@ const App = () => {
           )}
         </div>
         <div className="card-container">
-          {generatedLink && (
+          {!generatedLink && (
             <div className="card">
               <p>
                 Hey there! We've minted your NFT and sent it to your wallet. It
