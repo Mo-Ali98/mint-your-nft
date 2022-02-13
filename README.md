@@ -10,6 +10,8 @@ Current contract address is: 0x8678CD14c6B0301B1cB9803815e7258f6E56F6ea
 
 The NFTs minted are just simple black squares with a randomnly generated three-word combo at the center.
 
+![Screenshot_2](https://github.com/Mo-Ali98/mint-your-nft/blob/master/screenshots/NFT_example.png)
+
 ### Get started
 1. Run `npm install` at the root of your directory
 2. Run `npm run start` to start the project
