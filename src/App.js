@@ -140,16 +140,6 @@ const App = () => {
     }
   };
 
-  // Render Methods
-  const renderNotConnectedContainer = () => (
-    <button
-      onClick={connectWallet}
-      className="cta-button connect-wallet-button"
-    >
-      Connect to Wallet
-    </button>
-  );
-
   useEffect(() => {
     checkIfWalletIsConnected();
     // eslint-disable-next-line
@@ -165,7 +155,12 @@ const App = () => {
           <p className="header">Generate My NFT Collection</p>
           <p className="sub-text">Generate a unique NFT today.</p>
           {currentAccount === "" ? (
-            renderNotConnectedContainer()
+            <button
+              onClick={connectWallet}
+              className="cta-button connect-wallet-button"
+            >
+              Connect to Wallet
+            </button>
           ) : (
             /** Add askContractToMintNft Action for the onClick event **/
             <button
@@ -178,7 +173,7 @@ const App = () => {
           )}
         </div>
         <div className="card-container">
-          {!generatedLink && (
+          {generatedLink && (
             <div className="card">
               <p>
                 Hey there! We've minted your NFT and sent it to your wallet. It
