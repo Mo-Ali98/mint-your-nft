@@ -6,7 +6,8 @@ import { ethers } from "ethers";
 //const OPENSEA_LINK = "";
 //const TOTAL_MINT_COUNT = 50;
 
-const CONTRACT_ADDRESS = "0x8678CD14c6B0301B1cB9803815e7258f6E56F6ea";
+//Paste your Address here
+const CONTRACT_ADDRESS = "";
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
